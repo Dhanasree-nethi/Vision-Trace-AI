@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionTrace AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+        body{
+            background: linear-gradient(135deg,#07111f,#0c1b2f,#11263d);
+            min-height:100vh;
+            overflow-x:hidden;
+            color:white;
+        }
+
+        .background-glow{
+            position:absolute;
+            width:500px;
+            height:500px;
+            background:#00d9ff;
+            filter:blur(180px);
+            opacity:0.15;
+            top:-120px;
+            right:-100px;
+            z-index:0;
+        }
+
+        .background-glow2{
+            position:absolute;
+            width:400px;
+            height:400px;
+            background:#7b61ff;
+            filter:blur(170px);
+            opacity:0.15;
+            bottom:-120px;
+            left:-100px;
+            z-index:0;
+        }
+
+        .navbar{
+            width:100%;
+            padding:24px 8%;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            position:relative;
+            z-index:10;
+        }
+
+        .logo{
+            font-size:28px;
+            font-weight:700;
+            color:#ffffff;
+            letter-spacing:1px;
+        }
+
+        .logo span{
+            color:#00d9ff;
+        }
+
+        .hero{
+            min-height:85vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:40px 8%;
+            position:relative;
+            z-index:5;
+        }
+
+        .hero-container{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:60px;
+            align-items:center;
+            width:100%;
+            max-width:1400px;
+        }
+
+        .left-section h1{
+            font-size:68px;
+            line-height:1.1;
+            margin-bottom:24px;
+            font-weight:700;
+        }
+
+        .left-section h1 span{
+            color:#00d9ff;
+        }
+
+        .subtitle{
+            font-size:20px;
+            color:#c7d4e5;
+            line-height:1.8;
+            margin-bottom:35px;
+            max-width:650px;
+        }
+
+        .features{
+            display:flex;
+            flex-wrap:wrap;
+            gap:16px;
+            margin-bottom:40px;
+        }
+
+        .feature-box{
+            padding:12px 20px;
+            background:rgba(255,255,255,0.08);
+            border:1px solid rgba(255,255,255,0.1);
+            border-radius:14px;
+            backdrop-filter:blur(10px);
+            font-size:15px;
+            color:#dce8f8;
+        }
+
+        .upload-card{
+            background:rgba(255,255,255,0.08);
+            border:1px solid rgba(255,255,255,0.12);
+            padding:40px;
+            border-radius:28px;
+            backdrop-filter:blur(20px);
+            box-shadow:0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .upload-card h2{
+            font-size:32px;
+            margin-bottom:10px;
+        }
+
+        .upload-card p{
+            color:#cdd7e4;
+            margin-bottom:30px;
+            line-height:1.7;
+        }
+
+        .upload-area{
+            border:2px dashed rgba(255,255,255,0.25);
+            border-radius:22px;
+            padding:45px 20px;
+            text-align:center;
+            transition:0.3s;
+            background:rgba(255,255,255,0.04);
+        }
+
+        .upload-area:hover{
+            border-color:#00d9ff;
+            background:rgba(0,217,255,0.08);
+        }
+
+        .upload-area input{
+            margin-top:18px;
+            color:white;
+        }
+
+        .upload-area h3{
+            font-size:22px;
+            margin-bottom:10px;
+        }
+
+        .upload-area p{
+            margin-bottom:10px;
+            color:#b9c7d8;
+        }
+
+        .search-btn{
+            width:100%;
+            margin-top:30px;
+            padding:18px;
+            border:none;
+            border-radius:16px;
+            background:linear-gradient(90deg,#00d9ff,#5f7cff);
+            color:white;
+            font-size:18px;
+            font-weight:600;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .search-btn:hover{
+            transform:translateY(-3px);
+            box-shadow:0 10px 25px rgba(0,217,255,0.3);
+        }
+
+        .bottom-text{
+            margin-top:20px;
+            text-align:center;
+            color:#b6c4d4;
+            font-size:14px;
+        }
+
+        .scan-box{
+            margin-top:30px;
+            background:rgba(0,217,255,0.08);
+            border:1px solid rgba(0,217,255,0.2);
+            border-radius:18px;
+            padding:20px;
+        }
+
+        .scan-box h4{
+            margin-bottom:10px;
+            color:#00d9ff;
+        }
+
+        .scan-box p{
+            margin:0;
+            color:#d6e5f5;
+            line-height:1.7;
+        }
+
+        @media(max-width:1000px){
+
+            .hero-container{
+                grid-template-columns:1fr;
+            }
+
+            .left-section h1{
+                font-size:52px;
+            }
+        }
+
+        @media(max-width:650px){
+
+            .left-section h1{
+                font-size:42px;
+            }
+
+            .subtitle{
+                font-size:17px;
+            }
+
+            .upload-card{
+                padding:28px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="background-glow"></div>
+    <div class="background-glow2"></div>
+
+    <div class="navbar">
+        <div class="logo">
+            VisionTrace <span>AI</span>
+        </div>
+    </div>
+
+    <section class="hero">
+
+        <div class="hero-container">
+
+            <div class="left-section">
+
+                <h1>
+                    Smart Lost Object
+                    <span>Detection System</span>
+                </h1>
+
+                <p class="subtitle">
+                    VisionTrace AI intelligently detects and searches for lost objects using advanced AI-powered computer vision technology, real-time webcam scanning, and intelligent confidence-based object recognition.
+                </p>
+
+                <div class="features">
+                    <div class="feature-box">AI Object Detection</div>
+                    <div class="feature-box">Real-Time Camera Scanning</div>
+                    <div class="feature-box">YOLO Vision Model</div>
+                    <div class="feature-box">Confidence Analysis</div>
+                </div>
+
+            </div>
+
+            <div class="right-section">
+
+                <div class="upload-card">
+
+                    <h2>Upload Reference Object</h2>
+
+                    <p>
+                        Upload the image of the lost object and let VisionTrace AI scan the environment using live camera detection.
+                    </p>
+
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="upload-area">
+
+                            <h3>Select Object Image</h3>
+
+                            <p>
+                                Supported formats: JPG, PNG, JPEG
+                            </p>
+
+                            <input type="file" name="image" required>
+
+                        </div>
+                        <input
+                            type="text"
+                            name="object_name"
+                            placeholder="Enter object name (example: bottle, book, phone)"
+                            required
+                            style="
+                                width:100%;
+                                margin-top:20px;
+                                padding:16px;
+                                border:none;
+                                border-radius:14px;
+                                background:rgba(255,255,255,0.08);
+                                color:white;
+                                font-size:16px;
+                                outline:none;
+                             "
+                        >
+
+                        <button type="submit" class="search-btn">
+                            Upload Image
+                        </button>
+                    </form>
+                    <a href="/ai-camera/" style="text-decoration:none;">
+                        <button type="button" class="search-btn" style="margin-top:15px;">
+                            Start AI Detection
+                        </button>
+                    </a>
+
+                    <div class="scan-box">
+                        <h4>AI Detection Workflow</h4>
+                        <p>
+                            Upload → AI Analysis → Live Camera Scan → Object Match → Confidence Verification → Detection Result
+                        </p>
+                    </div>
+
+                    <div class="bottom-text">
+                        Powered by Django • YOLO • OpenCV • MySQL
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VisionTrace AI - Live Camera</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg,#07111f,#0c1b2f,#11263d);
+            color: white;
+            text-align: center;
+        }
+
+        .header {
+            padding: 25px;
+            font-size: 28px;
+            font-weight: 600;
+            color: #00d9ff;
+        }
+
+        .sub {
+            color: #cdd7e4;
+            margin-bottom: 20px;
+        }
+
+        .camera-box {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .camera-frame {
+            border: 3px solid #00d9ff;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0,217,255,0.3);
+        }
+
+        .status {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #7cffb2;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        VisionTrace AI Live Detection
+    </div>
+
+    <div class="sub">
+        Real-time object scanning using AI vision model
+    </div>
+
+    <div class="camera-box">
+        <img src="/video-feed/" width="800" class="camera-frame">
+    </div>
+
+    <div class="status">
+        AI is actively scanning environment...
+    </div>
+
+</body>
+</html>
