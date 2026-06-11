@@ -48,6 +48,7 @@ python manage.py runserver
 * Naveena (24011P0529)
 * Dhanasree (24011P0537)
 * Krishna Kowshik (24011P0540)
+* Nikhitha(24011P0545)
 
 ## Future Enhancements
 
